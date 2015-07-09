@@ -1,6 +1,6 @@
 ## Steuerung eines Arduino per Firmata (mit Java) über USB-Verbindung von einem PC aus mit Webfrontend (vertx)
 
-Diesen Text findet man auch als PDF-Datei [hier](../Anleitung.pdf).
+Diesen Text findet man auch als PDF-Datei [hier](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/Anleitung.pdf).
 
 
 ### Vorbemerkung:
@@ -35,3 +35,11 @@ startet den Server auf Port 8080 und versucht, den angeschlossenen Arduino über
 ## Verkabelung:
 
 ![Arduino-Verkabelung](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/firmataDisplay.png)
+
+## Links:
+- [Firmata4J](https://github.com/kurbatov/firmata4j)
+- [vertx-Toolkit](http://vertx.io/)
+- [Arduino-Homepage](https://www.arduino.cc/)
+- [Java für ARM (Raspberry PI)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-arm-downloads-2187472.html)
+- [Fritzing](http://fritzing.org/home/) zur Erstellung von Schaltbildern
+
