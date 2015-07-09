@@ -1,4 +1,4 @@
-## Steuerung eines Arduino mit Firmata4J (Java) über eine USB-Verbindung von einem PC aus mit Webfrontend (vertx)
+## Steuerung eines Arduino mit Firmata4J (Java) über eine USB-Verbindung von einem PC aus mit Webfrontend (vertx 3.0)
 
 Diesen Text findet man auch als PDF-Datei [hier](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/Anleitung.pdf).
 
