@@ -1,8 +1,7 @@
 ## Steuerung eines Arduino per Firmata (mit Java) über USB-Verbindung von einem PC aus mit Webfrontend (vertx)
 
-Anleitung als PDF-Datei [hier](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/Anleitung.pdf).
+Diesen Text findet man auch als PDF-Datei [hier](../Anleitung.pdf).
 
-## Testanwendung mit vertx 3, Firmata und dem Arduino UNO
 
 ### Vorbemerkung:
 Der Einsatz des Firmata-Protokolls erlaubt es, von einem PC aus mittels Java den Arduino direkt zu steuern. Beim Testen hat sich herausgestellt, dass einige Arduino-Nachbauten von Drittarbeitern das Firmata-Protokoll nicht unterstützen. Der Arduino UNO R3 als Original unterstützt das Protokoll jedoch problemlos.
