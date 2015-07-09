@@ -10,7 +10,7 @@ Die Steuerung per Java ist erfreulicherweise sogar von einem Raspberry PI aus m�
 
 ### Kurzbeschreibung:
 Der Aufbau erlaubt es, ein Arduino-Board mittels Java von einem PC (oder Raspberry PI) aus über die USB-Schnittstelle direkt anzusprechen. Dabei ist es möglich, Pins ein- und auszulesen, sowie Textnachrichten an das Board zu senden und zu empfangen.
-Darüber hinaus wurde mit Hilfe der vertx-Bibliothek ein Webfrontend zur Steuerung des Boards und zur Ausgabe von Informationen erstellt. Dieses Frontend ist über localhost:<port> im Browser aufrufbar, wobei <port> durch den gewählten Wert zu ersetzen ist (siehe weiter unten).
+Darüber hinaus wurde mit Hilfe der vertx-Bibliothek ein Webfrontend zur Steuerung des Boards und zur Ausgabe von Informationen erstellt. Dieses Frontend ist über #localhost:port# im Browser aufrufbar, wobei #port# durch den gewählten Wert zu ersetzen ist (siehe weiter unten).
 Dadurch ist die Steuerung des Arduino auch über eine Webseite möglich. Die Spannung am Fotowiderstand wird per Websocket in Echtzeit an die Webseite übertragen. Dies gelingt hier besonders einfach unter Einsatz der hervorragenden vertx-Bibliothek.
 
 Für die Steuerung des Displays wurde die Datei FirmataStandard aus den Arduino-Beispielen entsprechend für Textempfang und Display-Steuerung angepasst. Diese veränderte Datei befindet sich im „Ressources“-Verzeichnis im Unterordner „FirmataMitLCD“. Sie muss zur Steuerung des Arduino auf diesen vor Start des Java-Programms hochgeladen werden.
