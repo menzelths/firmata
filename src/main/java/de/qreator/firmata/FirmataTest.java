@@ -12,10 +12,7 @@ import io.vertx.ext.web.handler.sockjs.BridgeOptions;
 import io.vertx.ext.web.handler.sockjs.PermittedOptions;
 import io.vertx.ext.web.handler.sockjs.SockJSHandler;
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.firmata4j.IODevice;
@@ -25,21 +22,19 @@ import org.firmata4j.Pin;
 import org.firmata4j.firmata.FirmataDevice;
 
 public class FirmataTest {
-    static int modus=0; // 0 mac, 1 rpi, 2 windows
+    static int port=0,modus=0; // 0 mac, 1 rpi, 2 windows
     static final String [] betriebsmodus={"Macbook","Raspberry PI","Windows"};
-    static final int [] ports={8080,80};
-    static int port=0;
+    static final int [] ports={8080,80,8080};
     static final String [] geraet={"/dev/tty.usbmodem1411","/dev/ttyACM0","COM3"}; // hier die adresse des arduino eingeben, eventuell anders als hier eingetragen
-    static String usb="";
+    static String usb="", IP="";
     static boolean weiter = true;
-    static String IP="";
 
     public static void main(String[] s) {
         
         try{
             IP=InetAddress.getLocalHost().getHostAddress();
         } catch(Exception e){}
-        System.out.println("Modus 0: Macbook, Modus 1: Raspberry PI");
+        System.out.println("Modus 0: Macbook, Modus 1: Raspberry PI, Modus 2: Windows");
         
         if (s.length==1){
             modus=Integer.parseInt(s[0]); // betriebsmodus festlegen: 
