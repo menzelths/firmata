@@ -1,3 +1,7 @@
 # Steuerung eines Arduino per Firmata über USB-Verbindung von einem PC aus mit Webfrontend (vertx)
 
-Näheres dazu findet man [hier]() hat kein Titel-Attribut.
+Näheres dazu findet man [hier](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/Anleitung.pdf).
+
+## Verkabelung:
+
+![Arduino-Verkabelung](https://github.com/menzelths/firmata/blob/master/src/main/resources/FirmataMitLCD/firmataDisplay.png)
