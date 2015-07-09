@@ -111,11 +111,12 @@ public class FirmataTest {
                     // bei veränderungen an pins reagieren
                     Pin pin = event.getPin();
                     if (pin.getIndex() == 14) {
+                        long wert=pin.getValue();
                         int zaehler = 0;
 
                         for (int i = 0; i < 3; i++) {
                             try {
-                                if (pin.getValue() > schwellenwert[i]) {
+                                if (wert > schwellenwert[i]) {
                                     pinLED[i].setValue(1);
                                     zaehler++;
                                 } else {
@@ -125,10 +126,10 @@ public class FirmataTest {
                             }
                         }
                         try {
-                            device.sendMessage("LCD1_Helligkeit: "+pin.getValue()+"  ");
+                            device.sendMessage("LCD1_Helligkeit: "+wert+"  ");
                         } catch (IOException ex) {
                         }
-                        eb.publish("de.qreator.led", "" + zaehler); // wert an eventbus schicken
+                        eb.publish("de.qreator.led", "" + zaehler+"#"+wert); // wert an eventbus schicken
                         if (zaehler == 0) { // wenn alle lampen aus sind
                             weiter = false;
                         }

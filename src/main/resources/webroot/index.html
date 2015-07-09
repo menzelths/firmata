@@ -27,11 +27,13 @@
                 eb.registerHandler('de.qreator.led', function (message) {
                     ctx.fillStyle = "#ffffff";
                     ctx.fillRect(0, 0, 200, 100);
-                    var anzahl = parseInt(message);
+                    var wert=message.split("#");
+                    var anzahl = parseInt(wert[0]);
                     for (var i = 0; i < anzahl; i++) {
                         ctx.fillStyle = zeichenfarbe[i];
                         ctx.fillRect(10 + 50 * i, 10, 30, 30);
                     }
+                    $("#ausgabe").html("Helligkeit: "+wert[1]);
                 });
 
                 // schicke bei knopfdruck eine nachricht an de.qreator.lampe
