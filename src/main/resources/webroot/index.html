@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="sockjs-0.3.4.min.js"></script>
+        <script src="vertxbus-3.0.0.js"></script>
+        <script src="jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+
+        <script>
+            var zeichenfarbe = ["#ff0000", "#ffff00", "#00aa00"];
+            var eb = new vertx.EventBus('/eventbus'); // verbindung zu eventbus herstellen
+            $("body").html("<input type='button' class='einaus' status='1' value='EIN'></input>");
+            $("body").append("<input type='button' class='einaus' status='0' value='AUS'></input>");
+            $("body").append("<div id='ausgabe'></div>");
+            $("body").append("<canvas id='bild' width='200' height='100'></canvas>");
+            var ctx = $("#bild")[0].getContext("2d");
+
+            eb.onopen = function () {
+
+                // handler für eingänge auf de.qreator.led
+                eb.registerHandler('de.qreator.led', function (message) {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, 0, 200, 100);
+                    var anzahl = parseInt(message);
+                    for (var i = 0; i < anzahl; i++) {
+                        ctx.fillStyle = zeichenfarbe[i];
+                        ctx.fillRect(10 + 50 * i, 10, 30, 30);
+                    }
+                });
+
+                // schicke bei knopfdruck eine nachricht an de.qreator.lampe
+                $(".einaus").click(function () {
+                    var status = $(this).attr("status");
+                    eb.send("de.qreator.lampe", {typ: "einaus", status: status});
+                });
+            };
+        </script>
+    </body>
+</html>
