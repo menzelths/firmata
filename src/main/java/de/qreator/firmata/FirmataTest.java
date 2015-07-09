@@ -45,7 +45,7 @@ public class FirmataTest {
         Vertx vertx = Vertx.vertx();
         HttpServer server = vertx.createHttpServer();
         
-        Router router = Router.router(vertx);
+        Router router = Router.router(vertx); 
         SockJSHandler sockJSHandler = SockJSHandler.create(vertx);
         PermittedOptions inboundPermitted = new PermittedOptions().setAddress("de.qreator.lampe");
         PermittedOptions outboundPermitted = new PermittedOptions().setAddress("de.qreator.led");
