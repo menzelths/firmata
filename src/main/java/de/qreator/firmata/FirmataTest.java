@@ -25,26 +25,38 @@ import org.firmata4j.Pin;
 import org.firmata4j.firmata.FirmataDevice;
 
 public class FirmataTest {
-    static int modus=0; // 0 mac, 1 rpi
-    static final String [] betriebsmodus={"Macbook","Raspberry PI"};
-    static final int [] port={8080,80};
-    static final String [] geraet={"/dev/tty.usbmodem1411","/dev/ttyACM0"};
+    static int modus=0; // 0 mac, 1 rpi, 2 windows
+    static final String [] betriebsmodus={"Macbook","Raspberry PI","Windows"};
+    static final int [] ports={8080,80};
+    static int port=0;
+    static final String [] geraet={"/dev/tty.usbmodem1411","/dev/ttyACM0","COM3"}; // hier die adresse des arduino eingeben, eventuell anders als hier eingetragen
+    static String usb="";
     static boolean weiter = true;
     static String IP="";
 
     public static void main(String[] s) {
+        
         try{
             IP=InetAddress.getLocalHost().getHostAddress();
         } catch(Exception e){}
         System.out.println("Modus 0: Macbook, Modus 1: Raspberry PI");
-        if (s.length>0){
+        
+        if (s.length==1){
             modus=Integer.parseInt(s[0]); // betriebsmodus festlegen: 
+            System.out.println("Betriebsmodus: "+betriebsmodus[modus]);
+            
         }
-        System.out.println("Betriebsmodus: "+betriebsmodus[modus]);
+        port=ports[modus];
+        usb=geraet[modus];
+        if (s.length==2) {
+            usb=s[0];
+            port=Integer.parseInt(s[1]);
+        }
+        
         int[] schwellenwert = {60, 150, 250};
         Pin[] pinLED = new Pin[4];
 
-        IODevice device = new FirmataDevice(geraet[modus]); 
+        IODevice device = new FirmataDevice(usb); 
         Vertx vertx = Vertx.vertx();
         HttpServer server = vertx.createHttpServer();
         
@@ -58,7 +70,7 @@ public class FirmataTest {
         
         router.route("/eventbus/*").handler(sockJSHandler);
         router.route("/*").handler(StaticHandler.create()); // webroot unter src/main/resources/webroot        
-        server.requestHandler(router::accept).listen(port[modus]);
+        server.requestHandler(router::accept).listen(port);
 
         EventBus eb = vertx.eventBus();
         
